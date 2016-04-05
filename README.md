@@ -7,6 +7,8 @@ DreamCompute with Ansible.
 To keep it simple we have a single deploy.yml that is pretty much self contained except
 for needing an external role for HAProxy.
 
+![Infrastructure](https://raw.githubusercontent.com/digital-brands/dreamcompute-ansible/master/readme/dashboard.png)
+
 There are three instances that will be launched.  The first will be a load balancer 
 running HAProxy. The second and third instances will be identical and running a simple 
 NodeJS app.
