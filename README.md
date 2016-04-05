@@ -19,7 +19,9 @@ Server 1 - HAProxy
 Server 2 - NodeJS App
 Server 3 - NodeJS App
 
-![home 1](http://208.113.133.112/)
+![home 1](https://raw.githubusercontent.com/digital-brands/dreamcompute-ansible/master/readme/home-1.png)
+
+![home 2](https://raw.githubusercontent.com/digital-brands/dreamcompute-ansible/master/readme/home-2.png)
 
 ## Running and Deploying
 To get this running the following steps would be used...these may not be exact.
