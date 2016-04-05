@@ -19,6 +19,8 @@ Server 1 - HAProxy
 Server 2 - NodeJS App
 Server 3 - NodeJS App
 
+![home 1](http://208.113.133.112/)
+
 ## Running and Deploying
 To get this running the following steps would be used...these may not be exact.
 
