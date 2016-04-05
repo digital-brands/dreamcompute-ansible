@@ -1,0 +1,79 @@
+doctype html
+html
+	head
+		meta(charset='utf-8')
+		meta(name='viewport' content='width=device-width, initial-scale=1.0')
+		title DreamCompute Load Balancer Test
+		link(rel='stylesheet', type='text/css', href='http://yui.yahooapis.com/pure/0.6.0/pure-min.css')
+		link(rel='stylesheet', href='http://yui.yahooapis.com/pure/0.6.0/grids-responsive-min.css')
+		link(rel='stylesheet', href='/stylesheets/marketing.css')
+	
+	body
+		h1 Hello DreamCompute!
+		hr 
+		p I am a load balanced solution.  My infrastructure is:
+		p Server #1 (HAProxy)
+		p   -> Server #2 (NodeJS App) 
+		p   -> Server #3 (NodeJS App)
+
+		.header
+			.home-menu.pure-menu.pure-menu-horizontal.pure-menu-fixed
+				a.pure-menu-heading(href='') DreamCompute Test
+
+				ul.pure-menu-list
+					li.pure-menu-item
+						a(href='#').pure-menu-link Home
+
+		.splash-container
+			.splash
+				h1.splash-head DreamCompute!
+				p.splash-subhead I am a load balanced triple-server configuration launched via Ansible
+				a(href='#').pure-button.pure-button-primary Get Started
+
+		.content-wrapper
+			.content
+				h2.content-head.is-center Check out my setup:
+				.pure-g
+					.l-box.pure-u-1.pure-u-md-1-2.pure-u-lg-1-4
+						h3.content-subhead Launched via Ansible
+						p There is no need for a dashboard with this immutable repo.
+					.l-box.pure-u-1.pure-u-md-1-2.pure-u-lg-1-4
+						h3.content-subhead Server #1 - HAProxy
+						p Using Ansible's Galaxy we create a load balancer in minutes.
+					.l-box.pure-u-1.pure-u-md-1-2.pure-u-lg-1-4
+						h3.content-subhead Server #2 - NodeJS App
+						p Running NodeJS apps is a snap too.
+					.l-box.pure-u-1.pure-u-md-1-2.pure-u-lg-1-4
+						h3.content-subhead Server #3 - NodeJS App
+						p Give me some high-availablility by running more then one app.
+
+			.ribbon.l-box.pure-g
+				.l-box-lrg.is-center.pure-u-1.pure-u-md-1-1.pure-u-lg-5-5
+					h2.content-head.content-head-ribbon It's All So Easy
+					p We really spent almost no time getting our account set up and working with Ansible so we could launch and manage instances. This is amazing.
+
+			.content
+				h2.content-head.is-center You Could Conact Us, But It Won't Work
+				.pure-g
+					.l-box-lrg.pure-u-1.pure-u-md-2-5
+						form.pure-form.pure-form-stacked
+							fieldset
+								label(for='name') Your Name
+								input(id='name', type='text', placeholder='Your Name')
+
+								label(for='email') Your Email
+								input(id='email', type='email', placeholder='Your Email')
+
+								label(for='password') Your Password
+								input(id='password', type='password', placeholder='Your Password')
+
+								button(type='submit').pure-button Sign In
+					.l-box-lrg.pure-u-1.pure-u-md-3-5
+						h4 Contact Us?
+						p This form and all of the buttons on this page don't do anything.  So, have a blast and see what happens if you submit the form.
+
+						h4 More Information
+						p Developers really aren't supposed to be putting in this much content.  Isn't there some MBA around that needs something to do?  
+	
+			.footer.l-box.is-center Made with love from your Hosting Advice friends.
+				

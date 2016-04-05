@@ -1,0 +1,5 @@
+# to install:
+# ansible-galaxy install -p ./roles/ -r install_roles.yml
+
+# from galaxy
+- src: info.haproxy
