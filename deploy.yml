@@ -10,7 +10,7 @@
         image: Ubuntu-14.04
         flavor_ram: 512
         auto_floating_ip: yes
-        key_name: "testing"
+        key_name: "keyname"
       register: api_server_1
     - name: get facts about the server (including its public v4 IP address)
       os_server_facts:
@@ -18,11 +18,11 @@
       until: api_server_1.server.public_v4 != ""
       retries: 5
       delay: 10
-    - set_fact: public_v4="{{ api_server_1.server.public_v4 }}"
+    - set_fact: api_ins_1_ipv4="{{ api_server_1.server.public_v4 }}"
     - name: add the server to our ansible inventory
-      add_host: hostname={{ public_v4 }} groups=web ansible_ssh_user=dhc-user ansible_ssh_private_key_file=testing.pem
+      add_host: hostname={{ api_ins_1_ipv4 }} groups=web ansible_ssh_user=dhc-user ansible_ssh_private_key_file=testing.pem
     - name: wait for ssh to be available
-      wait_for: host={{ public_v4 }} port=22 state=started
+      wait_for: host={{ api_ins_1_ipv4 }} port=22 state=started
 
     - name: launch instance #2
       os_server:
@@ -31,7 +31,7 @@
         image: Ubuntu-14.04
         flavor_ram: 512
         auto_floating_ip: yes
-        key_name: "testing"
+        key_name: "keyname"
       register: api_server_2
     - name: get facts about the server (including its public v4 IP address)
       os_server_facts:
@@ -39,11 +39,11 @@
       until: api_server_2.server.public_v4 != ""
       retries: 5
       delay: 10
-    - set_fact: public_v4="{{ api_server_2.server.public_v4 }}"
+    - set_fact: api_ins_2_ipv4="{{ api_server_2.server.public_v4 }}"
     - name: add the server to our ansible inventory
-      add_host: hostname={{ public_v4 }} groups=web ansible_ssh_user=dhc-user ansible_ssh_private_key_file=testing.pem
+      add_host: hostname={{ api_ins_2_ipv4 }} groups=web ansible_ssh_user=dhc-user ansible_ssh_private_key_file=testing.pem
     - name: wait for ssh to be available
-      wait_for: host={{ public_v4 }} port=22 state=started
+      wait_for: host={{ api_ins_2_ipv4 }} port=22 state=started
 
     - name: launch instance - haproxy
       os_server:
@@ -52,7 +52,7 @@
         image: Ubuntu-14.04
         flavor_ram: 512
         auto_floating_ip: yes
-        key_name: "testing"
+        key_name: "keyname"
       register: api_server_3
     - name: get facts about the server (including its public v4 IP address)
       os_server_facts:
@@ -85,7 +85,7 @@
             value: 5000
       haproxy_frontends:
       - name: 'fe-1'
-        ip: 208.113.133.112:80
+        ip: '{{ public_ipv4 }}:80'
         maxconn: '1000'
         default_backend: 'be-site'
       haproxy_backends: 
@@ -93,10 +93,10 @@
         description: 'Backend Servers.'
         servers:
           - name: 'be-1'
-            ip: 208.113.133.99
+            ip: '{{ api_ins_1_ipv4 }}'
             port: 3000
           - name: 'be-2'
-            ip: 208.113.133.100
+            ip: '{{ api_ins_2_ipv4 }}'
             port: 3000
 
 - hosts: web
